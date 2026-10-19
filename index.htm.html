@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="pa">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#10254d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Polity MCQ">
+  <meta name="description" content="ਨਿੱਜੀ ਪੰਜਾਬੀ Polity MCQ ਪ੍ਰੈਕਟਿਸ ਐਪ">
+  <title>Punjabi Polity MCQs — ਨਿੱਜੀ ਪ੍ਰੈਕਟਿਸ</title>
+  <style>
+   :root { --ink:#142949; --muted:#62718a; --royal:#244bd5; --navy:#10254d;
+    --bg:#f4f7fb; --line:#dce4f0; --white:#fff; --green:#13795b; --red:#be3746; }
+   * { box-sizing:border-box; }
+   html { -webkit-text-size-adjust:100%; }
+   body {margin:0; background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans Gurmukhi","Arial Unicode MS",sans-serif;line-height:1.5;}
+   button,select,input {font:inherit;}
+   button {cursor:pointer; -webkit-tap-highlight-color: transparent;}
+   button:focus-visible,select:focus-visible{outline:3px solid #7aa7ff;outline-offset:2px;}
+   .wrap{max-width:780px;margin:0 auto;padding:0 17px 110px;}
+   .hero{background:linear-gradient(125deg,#10254d 0%,#24468d 100%);color:white;padding:24px 0 26px;padding-top:calc(20px + env(safe-area-inset-top));border-radius:0 0 26px 26px;}
+   .hero-inner{max-width:780px;margin:auto;padding:0 18px;}
+   .topline{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:23px;}
+   .brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:1.06rem;letter-spacing:.2px}
+   .brandmark{height:32px;width:32px;display:grid;place-items:center;border-radius:10px;background:#d9e6ff;color:#153d97;font-weight:900;}
+   .tiny{font-size:.75rem;opacity:.86;}
+   .hero h1{font-size:1.6rem;line-height:1.3;margin:0 0 7px;font-weight:800}
+   .hero p{font-size:.88rem;max-width:480px;opacity:.86;margin:0;}
+   .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:-16px;margin-bottom:21px;}
+   .stat{background:white;border:1px solid #e0e9f3;border-radius:15px;padding:12px 8px;text-align:center;box-shadow:0 5px 18px #1435600d;}
+   .stat strong{display:block;font-size:1.25rem;color:var(--navy);font-variant-numeric:tabular-nums}
+   .stat span{display:block;font-size:.7rem;color:var(--muted);line-height:1.4}
+   .panel{background:var(--white);border:1px solid #e1e8f1;border-radius:19px;padding:18px;margin:14px 0;box-shadow:0 5px 16px #152c5209;}
+   .panel h2{margin:0 0 6px;font-size:1.09rem}
+   .panel p{color:var(--muted);font-size:.85rem;margin:0 0 14px}
+   label.field{display:block;font-size:.82rem;font-weight:700;margin:13px 0 6px;color:var(--ink)}
+   select{width:100%;border:1px solid var(--line);border-radius:11px;background:#fbfdff;padding:12px;color:var(--ink);font-weight:600;min-height:45px}
+   .btn{display:inline-flex;gap:7px;align-items:center;justify-content:center;border:0;border-radius:12px;font-weight:750;padding:12px 14px;min-height:45px;line-height:1.3;text-align:center}
+   .primary{background:var(--royal);color:white}
+   .secondary{background:#eaf0ff;color:#2146bf}
+   .outline{background:#fff;border:1px solid var(--line);color:var(--ink)}
+   .danger{background:#fff3f4;color:var(--red)}
+   .btn:disabled{opacity:.45;cursor:default}
+   .full{width:100%}
+   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
+   .pill{background:#e9f0fc;color:#3e5990;border-radius:999px;font-size:.7rem;font-weight:750;padding:5px 9px;display:inline-block}
+   .notice{font-size:.77rem;color:var(--muted);margin-top:10px}
+   .notice.good{color:var(--green)}.notice.bad{color:var(--red)}
+   .question{font-weight:750;font-size:1.15rem;white-space:pre-line;line-height:1.7;margin:15px 0}
+   .choices{display:grid;gap:9px}
+   .choice{width:100%;display:flex;text-align:left;gap:10px;align-items:center;border:1.5px solid #dde5ef;background:#fff;border-radius:14px;padding:12px;min-height:55px;color:var(--ink)}
+   .choice:disabled{opacity:1;color:var(--ink);cursor:default}
+   .choice .letter{flex-shrink:0;background:#edf2f9;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-weight:800}
+   .choice.correct{border-color:#4aac86;background:#e8f8f1}.choice.correct .letter{background:#c0ead7;color:#0c6b46}
+   .choice.wrong{border-color:#ed9ba8;background:#fff0f2}.choice.wrong .letter{background:#f8cad0;color:#a21b2f}
+   .question-foot{display:flex;justify-content:space-between;align-items:center;gap:9px;margin-top:10px;font-size:.77rem;color:var(--muted)}
+   .progress{height:7px;border-radius:99px;background:#e9eef8;margin:13px 0;overflow:hidden}
+   .progress > div{height:100%;background:#284fd9;transition:width .3s}
+   .feedback{margin:13px 0;padding:13px 14px;border-radius:13px;font-size:.87rem;background:#f2f6fb}
+   .feedback strong{display:block;margin-bottom:4px}.feedback.good{background:#e8f8f1;color:#0d6040}.feedback.bad{background:#fff0f2;color:#a32235}
+   .feedback p{color:inherit;margin:4px 0 0;font-size:.85rem}
+   .bottom-bar{position:fixed;bottom:0;left:0;right:0;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:#ffffffed;backdrop-filter:blur(12px);border-top:1px solid var(--line);}
+   .bottom-inner{max-width:780px;margin:auto;display:flex;gap:8px;}
+   .bottom-inner button{flex:1}
+   .hidden{display:none !important}
+   .fileBtn{position:relative;overflow:hidden}
+   .fileBtn input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+   .center{text-align:center}
+   .resultNum{font-size:2.7rem;color:#254bd1;font-weight:900;margin:10px 0 0}
+   .review{margin-top:10px;padding:12px;border:1px solid var(--line);border-radius:12px;}
+   .review p{margin:5px 0 0}.review b{font-size:.8rem}
+   .footer{text-align:center;font-size:.73rem;color:#8995a7;padding:4px 0 25px}
+   @media(max-width:370px){.wrap{padding-left:11px;padding-right:11px}.panel{padding:14px}.hero h1{font-size:1.42rem}.btn{font-size:.87rem;padding:10px}}
+  </style>
+</head>
+<body>
+<header class="hero">
+ <div class="hero-inner">
+  <div class="topline"><div class="brand"><span class="brandmark">Q</span> Punjabi Polity MCQ</div><span class="tiny">ਨਿੱਜੀ ਪ੍ਰੈਕਟਿਸ</span></div>
+  <h1>ਪੰਜਾਬੀ Polity MCQ ਪ੍ਰੈਕਟਿਸ</h1>
+  <p>ਆਪਣੇ Chapters ਚੁਣੋ, ਪ੍ਰਸ਼ਨ ਹੱਲ ਕਰੋ ਅਤੇ ਨਤੀਜੇ ਵੇਖੋ। ਤੁਹਾਡੇ Import ਕੀਤੇ MCQs ਇਸ iPhone ਉੱਤੇ ਸੰਭਾਲੇ ਜਾਂਦੇ ਹਨ।</p>
+ </div>
+</header>
+<main class="wrap">
+ <section class="stats">
+  <div class="stat"><strong id="total">0</strong><span>ਕੁੱਲ ਪ੍ਰਸ਼ਨ</span></div>
+  <div class="stat"><strong id="attempted">0</strong><span>ਦਿੱਤੇ ਉੱਤਰ</span></div>
+  <div class="stat"><strong id="wrong">0</strong><span>ਦੁਬਾਰਾ ਕਰਨ ਵਾਲੇ</span></div>
+ </section>
+ <section id="setup">
+  <div class="panel">
+   <h2>📚 ਪ੍ਰੈਕਟਿਸ ਸ਼ੁਰੂ ਕਰੋ</h2>
+   <p>ਪਹਿਲਾਂ ਟਾਪਿਕ ਅਤੇ ਫਿਰ ਪ੍ਰੈਕਟਿਸ ਦਾ ਢੰਗ ਚੁਣੋ।</p>
+   <label class="field" for="topic">ਟਾਪਿਕ / Chapter</label>
+   <select id="topic"><option value="__ALL__">ਸਾਰੇ Chapters</option></select>
+   <label class="field" for="mode">ਪ੍ਰੈਕਟਿਸ ਮੋਡ</label>
+   <select id="mode">
+    <option value="practice">Practice — ਸਾਰੇ ਉਪਲਬਧ ਪ੍ਰਸ਼ਨ</option>
+    <option value="25">Mock Test — 25 ਪ੍ਰਸ਼ਨ</option>
+    <option value="50">Mock Test — 50 ਪ੍ਰਸ਼ਨ</option>
+    <option value="100">Mock Test — 100 ਪ੍ਰਸ਼ਨ</option>
+    <option value="wrong">ਗਲਤ ਹੋਏ ਪ੍ਰਸ਼ਨਾਂ ਦੀ ਦੁਬਾਰਾ ਪ੍ਰੈਕਟਿਸ</option>
+   </select>
+   <div style="height:14px"></div>
+   <button class="btn primary full" id="start">ਪ੍ਰੈਕਟਿਸ ਸ਼ੁਰੂ ਕਰੋ →</button>
+   <div id="startMsg" class="notice" role="status"></div>
+  </div>
+  <div class="panel">
+   <h2>📁 ਆਪਣੇ JSON MCQs ਜੋੜੋ</h2>
+   <p>ਸਾਡੀਆਂ 47 ਵੱਖ-ਵੱਖ JSON ਫਾਈਲਾਂ ਜਾਂ ਇੱਕ Master JSON ਇੱਥੇ Import ਕਰ ਸਕਦੇ ਹੋ। ਇੱਕੋ ਪ੍ਰਸ਼ਨ ਦੁਬਾਰਾ ਨਹੀਂ ਜੁੜੇਗਾ।</p>
+   <label class="btn secondary full fileBtn" for="files">＋ JSON ਫਾਈਲਾਂ ਚੁਣੋ
+     <input id="files" type="file" accept=".json,application/json" multiple>
+   </label>
+   <div class="notice" id="uploadMsg" role="status">ਇਸ ਵੇਲੇ ਨਮੂਨੇ ਦੇ ਕੁਝ MCQs ਮੌਜੂਦ ਹਨ। ਅਸਲੀ ਬੈਚ Import ਕਰਨ 'ਤੇ ਉਹ ਜੋੜੇ ਜਾਣਗੇ।</div>
+   <div style="height:10px"></div>
+   <button class="btn danger full" id="clearBank" type="button">Import ਕੀਤਾ ਡਾਟਾ ਹਟਾਓ</button>
+   <div class="notice">ਨੋਟ: Browser ਦਾ Site Data ਸਾਫ਼ ਕਰਨ ਨਾਲ ਸਥਾਨਕ ਤੌਰ 'ਤੇ ਸੇਵ MCQs ਮਿਟ ਸਕਦੇ ਹਨ। Master JSON ਦੀ ਕਾਪੀ Files ਵਿੱਚ ਰੱਖੋ।</div>
+  </div>
+ </section>
+ <section class="panel hidden" id="quiz">
+  <div class="question-foot"><span class="pill" id="tag">ਟਾਪਿਕ</span><span id="counter">1 / 25</span></div>
+  <div class="progress"><div id="progressbar" style="width:0%"></div></div>
+  <div class="question" id="question"></div>
+  <div class="choices" id="choices"></div>
+  <div id="feedback" class="feedback hidden"></div>
+  <div class="question-foot"><span id="liveScore">ਸਹੀ: 0</span><span>ਚੋਣ ਕਰਨ ਤੋਂ ਬਾਅਦ ਅੱਗੇ ਜਾਓ</span></div>
+ </section>
+ <section class="panel hidden" id="result">
+  <div class="center"><span class="pill">ਟੈਸਟ ਮੁਕੰਮਲ</span><div class="resultNum" id="resultNum">0 / 0</div><h2>ਤੁਹਾਡਾ ਨਤੀਜਾ</h2><p id="resultText"></p></div>
+  <div id="review"></div>
+  <button class="btn primary full" id="restart">ਹੋਰ ਪ੍ਰੈਕਟਿਸ ਕਰੋ</button>
+ </section>
+ <div class="footer">Punjabi Polity · ਸਿਰਫ਼ ਨਿੱਜੀ ਅਧਿਐਨ ਲਈ</div>
+</main>
+<div class="bottom-bar hidden" id="bar"><div class="bottom-inner"><button class="btn outline" id="quit">ਬਾਹਰ</button><button class="btn primary" id="next" disabled>ਅਗਲਾ ਪ੍ਰਸ਼ਨ →</button></div></div>
+<script>
+"use strict";
+const $=id=>document.getElementById(id);
+const EXAMPLES=[
+ {question:"ਭਾਰਤੀ ਸੰਵਿਧਾਨ ਕਦੋਂ ਲਾਗੂ ਹੋਇਆ?",options:["15 ਅਗਸਤ 1947","26 ਜਨਵਰੀ 1950","26 ਨਵੰਬਰ 1949","2 ਅਕਤੂਬਰ 1950"],correct_answer:1,topic:"ਸੰਵਿਧਾਨ — ਜਾਣ-ਪਛਾਣ",explanation:"26 ਜਨਵਰੀ 1950 ਨੂੰ ਭਾਰਤੀ ਸੰਵਿਧਾਨ ਲਾਗੂ ਹੋਇਆ।"},
+ {question:"ਭਾਰਤੀ ਸੰਵਿਧਾਨ ਸਭਾ ਦੇ ਸਥਾਈ ਪ੍ਰਧਾਨ ਕੌਣ ਸਨ?",options:["ਡਾ. ਬੀ. ਆਰ. ਅੰਬੇਡਕਰ","ਪੰਡਿਤ ਨਹਿਰੂ","ਡਾ. ਰਾਜੇਂਦਰ ਪ੍ਰਸਾਦ","ਸਰਦਾਰ ਪਟੇਲ"],correct_answer:2,topic:"ਸੰਵਿਧਾਨ ਸਭਾ",explanation:"ਡਾ. ਰਾਜੇਂਦਰ ਪ੍ਰਸਾਦ ਸੰਵਿਧਾਨ ਸਭਾ ਦੇ ਸਥਾਈ ਪ੍ਰਧਾਨ ਸਨ।"},
+ {question:"ਮੌਲਿਕ ਅਧਿਕਾਰ ਸੰਵਿਧਾਨ ਦੇ ਕਿਹੜੇ ਭਾਗ ਵਿੱਚ ਹਨ?",options:["ਭਾਗ II","ਭਾਗ III","ਭਾਗ IV","ਭਾਗ V"],correct_answer:1,topic:"ਮੌਲਿਕ ਅਧਿਕਾਰ",explanation:"ਮੌਲਿਕ ਅਧਿਕਾਰ ਭਾਰਤੀ ਸੰਵਿਧਾਨ ਦੇ ਭਾਗ III ਵਿੱਚ ਹਨ।"},
+ {question:"ਰਾਜ ਦੇ ਨੀਤੀ-ਨਿਰਦੇਸ਼ਕ ਤੱਤ ਕਿਹੜੇ ਭਾਗ ਵਿੱਚ ਹਨ?",options:["ਭਾਗ III","ਭਾਗ IV","ਭਾਗ IVA","ਭਾਗ VI"],correct_answer:1,topic:"ਨੀਤੀ-ਨਿਰਦੇਸ਼ਕ ਤੱਤ",explanation:"ਇਹ ਤੱਤ ਸੰਵਿਧਾਨ ਦੇ ਭਾਗ IV ਵਿੱਚ ਦਿੱਤੇ ਗਏ ਹਨ।"}
+];
+let bank=[],session=[],index=0,answered=false,sessionCorrect=0,sessionLog=[];
+let history=loadHistory();
+function loadHistory(){try{return JSON.parse(localStorage.getItem("pmcq_stats_v1"))||{attempted:0,wrong:[]}}catch{return {attempted:0,wrong:[]}}}
+function saveHistory(){try{localStorage.setItem("pmcq_stats_v1",JSON.stringify(history))}catch{}}
+function key(q){return q.question.trim()+"\u241f"+q.options.join("\u241e");}
+function findItems(payload,depth=0){
+ if(depth>8)return [];
+ if(Array.isArray(payload))return payload.flatMap(item=>findItems(item,depth+1));
+ if(!payload||typeof payload!=="object")return [];
+ if(typeof (payload.question||payload.q||payload.text)==="string"&&(payload.options||payload.choices))return [payload];
+ let out=[];
+ for(let field of ["questions","mcqs","items","data","chapters","topics","sets","batches"])if(payload[field])out.push(...findItems(payload[field],depth+1));
+ return out;
+}
+function pick(obj,names){for(const n of names) if(obj[n]!==undefined && obj[n]!==null)return obj[n];return undefined;}
+function normalize(q){
+ const question=String(pick(q,["question","q","text"])||"").trim();
+ let opts=pick(q,["options","choices","answers"]);
+ if(!Array.isArray(opts)&&opts&&typeof opts==="object")opts=["A","B","C","D"].map(k=>opts[k]??opts[k.toLowerCase()]);
+ if(Array.isArray(opts))opts=opts.map(x=>typeof x==="string"?x.trim():String(x?.text??x?.label??"").trim());
+ if(!question||!Array.isArray(opts)||opts.length!==4||opts.some(x=>!x))return null;
+ let ans=pick(q,["correct_answer","correctAnswer","answer","correct","correct_option"]);
+ if(typeof ans==="string"){
+   const val=ans.trim();
+   if(/^[0-3]$/.test(val))ans=Number(val);
+   else if(/^[A-Da-d]$/.test(val))ans=val.toUpperCase().charCodeAt(0)-65;
+   else if(/^[1-4]$/.test(val))ans=Number(val)-1;
+   else ans=opts.findIndex(x=>x===val);
+ }
+ if(!Number.isInteger(ans)||ans<0||ans>3)return null;
+ return {question,options:opts,correct_answer:ans,topic:String(pick(q,["topic","chapter","category","subject"])||"ਆਮ Polity"),explanation:String(pick(q,["explanation","explain","reason"])||"")};
+}
+function clean(arr){const map=new Map;for(const q of arr){const n=normalize(q);if(n)map.set(key(n),n)}return [...map.values()]}
+function openDb(){
+ return new Promise((resolve,reject)=>{
+  if(!window.indexedDB){reject(new Error("IndexedDB is unavailable"));return;}
+  const request=indexedDB.open("PunjabiMCQsDB",1);
+  request.onupgradeneeded=()=>request.result.createObjectStore("storage");
+  request.onsuccess=()=>resolve(request.result);
+  request.onerror=()=>reject(request.error);
+ });
+}
+async function dbGet(){
+ const db=await openDb();
+ return new Promise((resolve,reject)=>{
+  const t=db.transaction("storage","readonly");
+  const req=t.objectStore("storage").get("bank");
+  req.onsuccess=()=>{db.close();resolve(req.result)};
+  req.onerror=()=>{db.close();reject(req.error)};
+ });
+}
+async function dbSet(value){
+ const db=await openDb();
+ return new Promise((resolve,reject)=>{
+  const t=db.transaction("storage","readwrite");
+  t.objectStore("storage").put(value,"bank");
+  t.oncomplete=()=>{db.close();resolve()};
+  t.onerror=()=>{db.close();reject(t.error)};
+ });
+}
+function renderSummary(){
+ $("total").textContent=bank.length.toLocaleString("en-IN");
+ $("attempted").textContent=history.attempted.toLocaleString("en-IN");
+ const keys=new Set(bank.map(key));
+ history.wrong=history.wrong.filter(k=>keys.has(k));
+ $("wrong").textContent=history.wrong.length;
+ const topics=[...new Set(bank.map(q=>q.topic))].sort((a,b)=>a.localeCompare(b));
+ const selected=$("topic").value;
+ $("topic").replaceChildren(new Option("ਸਾਰੇ Chapters","__ALL__"),...topics.map(t=>new Option(t,t)));
+ if(topics.includes(selected))$("topic").value=selected;
+}
+function home(){session=[];$("setup").classList.remove("hidden");$("quiz").classList.add("hidden");$("result").classList.add("hidden");$("bar").classList.add("hidden");renderSummary();window.scrollTo(0,0)}
+function startQuiz(){
+ const topic=$("topic").value,mode=$("mode").value;
+ let pool=bank.filter(q=>(topic==="__ALL__"||q.topic===topic));
+ if(mode==="wrong"){const w=new Set(history.wrong);pool=pool.filter(q=>w.has(key(q)))}
+ if(!pool.length){$("startMsg").textContent="ਇਸ ਚੋਣ ਵਿੱਚ ਕੋਈ ਪ੍ਰਸ਼ਨ ਨਹੀਂ। ਹੋਰ ਟਾਪਿਕ ਜਾਂ ਮੋਡ ਚੁਣੋ।";return}
+ $("startMsg").textContent="";
+ // Use shuffled questions for tests; study mode shows available questions in source order.
+ if(mode!=="practice")pool=pool.slice().sort(()=>Math.random()-.5);
+ session=/^\d+$/.test(mode)?pool.slice(0,Number(mode)):pool;
+ index=0;sessionCorrect=0;sessionLog=[];
+ $("setup").classList.add("hidden");$("result").classList.add("hidden");$("quiz").classList.remove("hidden");$("bar").classList.remove("hidden");
+ renderQuestion();window.scrollTo(0,0);
+}
+function renderQuestion(){
+ answered=false;const q=session[index];
+ $("tag").textContent=q.topic;
+ $("counter").textContent=(index+1)+" / "+session.length;
+ $("progressbar").style.width=((index+1)/session.length*100)+"%";
+ $("question").textContent=q.question;
+ $("choices").replaceChildren();
+ q.options.forEach((option,n)=>{
+  const b=document.createElement("button");b.className="choice";b.type="button";
+  const letter=document.createElement("span");letter.className="letter";letter.textContent="ABCD"[n];
+  const label=document.createElement("span");label.textContent=option;
+  b.append(letter,label);
+  b.addEventListener("click",()=>choose(n));
+  $("choices").append(b);
+ });
+ $("feedback").classList.add("hidden");
+ $("liveScore").textContent="ਸਹੀ: "+sessionCorrect;
+ $("next").textContent=index===session.length-1?"ਨਤੀਜਾ ਵੇਖੋ ✓":"ਅਗਲਾ ਪ੍ਰਸ਼ਨ →";
+ $("next").disabled=true;
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+function choose(n){
+ if(answered)return;
+ answered=true;
+ const q=session[index],correct=n===q.correct_answer;
+ if(correct)sessionCorrect++;
+ history.attempted++;
+ const k=key(q);
+ if(correct)history.wrong=history.wrong.filter(x=>x!==k);
+ else if(!history.wrong.includes(k))history.wrong.push(k);
+ saveHistory();
+ sessionLog.push({q,chosen:n,correct});
+ [...$("choices").children].forEach((b,i)=>{b.disabled=true;if(i===q.correct_answer)b.classList.add("correct");else if(i===n)b.classList.add("wrong")});
+ const fb=$("feedback");fb.className="feedback "+(correct?"good":"bad");
+ fb.replaceChildren();
+ const head=document.createElement("strong");head.textContent=correct?"✓ ਸਹੀ ਜਵਾਬ!":"✗ ਸਹੀ ਜਵਾਬ: "+q.options[q.correct_answer];
+ fb.append(head);
+ if(q.explanation){const p=document.createElement("p");p.textContent=q.explanation;fb.append(p)}
+ $("liveScore").textContent="ਸਹੀ: "+sessionCorrect;
+ $("next").disabled=false;
+}
+function next(){if(!answered)return;if(index<session.length-1){index++;renderQuestion()}else showResult()}
+function showResult(){
+ $("quiz").classList.add("hidden");$("bar").classList.add("hidden");$("result").classList.remove("hidden");
+ $("resultNum").textContent=sessionCorrect+" / "+session.length;
+ $("resultText").textContent="ਸਕੋਰ: "+Math.round(sessionCorrect/session.length*100)+"% · ਗਲਤ: "+(session.length-sessionCorrect);
+ const box=$("review");box.replaceChildren();
+ const wrong=sessionLog.filter(x=>!x.correct);
+ if(wrong.length){
+  const h=document.createElement("h2");h.textContent="ਗਲਤ ਹੋਏ ਪ੍ਰਸ਼ਨ";box.append(h);
+  wrong.forEach(({q},i)=>{
+   const card=document.createElement("div");card.className="review";
+   const title=document.createElement("b");title.textContent=(i+1)+". "+q.question;
+   const text=document.createElement("p");text.textContent="ਸਹੀ ਉੱਤਰ: "+q.options[q.correct_answer];
+   card.append(title,text);box.append(card);
+  });
+ }else{const p=document.createElement("p");p.textContent="ਸ਼ਾਬਾਸ਼! ਇਸ ਸੈੱਟ ਦੇ ਸਾਰੇ ਉੱਤਰ ਸਹੀ ਹਨ।";box.append(p)}
+ renderSummary();window.scrollTo(0,0)
+}
+async function upload(evt){
+ const files=[...evt.target.files];if(!files.length)return;
+ $("uploadMsg").textContent=files.length+" JSON ਫਾਈਲਾਂ ਪੜ੍ਹੀਆਂ ਜਾ ਰਹੀਆਂ ਹਨ…";
+ try{
+  let incoming=[],rejected=[];
+  for(const file of files){
+   try{
+    const parsed=JSON.parse(await file.text());
+    const found=findItems(parsed);
+    if(!found.length){rejected.push(file.name);continue}
+    incoming.push(...found);
+   }catch(e){rejected.push(file.name)}
+  }
+  const normalized=clean(incoming);
+  if(!normalized.length)throw Error("ਫਾਈਲਾਂ ਵਿੱਚ ਵੈਧ ਪ੍ਰਸ਼ਨ ਨਹੀਂ ਮਿਲੇ।");
+  const base=bank.length===EXAMPLES.length && bank.every((q,i)=>key(q)===key(EXAMPLES[i]))?[]:bank;
+  const all=clean([...base,...normalized]);
+  await dbSet(all);bank=all;renderSummary();
+  $("uploadMsg").className="notice good";
+  $("uploadMsg").textContent="✓ "+normalized.length+" ਵੈਧ ਪ੍ਰਸ਼ਨ ਪੜ੍ਹੇ ਗਏ। ਹੁਣ ਕੁੱਲ "+bank.length+" MCQs ਹਨ।"+(rejected.length?" ਨਾ ਪੜ੍ਹੀਆਂ ਫਾਈਲਾਂ: "+rejected.join(", "):"");
+ }catch(e){
+  $("uploadMsg").className="notice bad";$("uploadMsg").textContent="Import ਨਹੀਂ ਹੋਇਆ: "+e.message;
+ }
+ evt.target.value="";
+}
+async function clearBank(){
+ if(!confirm("ਕੀ ਤੁਸੀਂ Import ਕੀਤੇ ਸਾਰੇ MCQs ਅਤੇ Practice ਇਤਿਹਾਸ ਹਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?"))return;
+ try{await dbSet(null);bank=EXAMPLES.slice();history={attempted:0,wrong:[]};saveHistory();renderSummary();$("uploadMsg").textContent="ਹੁਣ ਸਿਰਫ਼ ਨਮੂਨੇ ਵਾਲੇ MCQs ਹਨ।";$("uploadMsg").className="notice"}catch(e){alert("ਡਾਟਾ ਨਹੀਂ ਹਟਿਆ: "+e.message)}
+}
+$("start").addEventListener("click",startQuiz);
+$("next").addEventListener("click",next);
+$("quit").addEventListener("click",home);
+$("restart").addEventListener("click",home);
+$("files").addEventListener("change",upload);
+$("clearBank").addEventListener("click",clearBank);
+(async()=>{
+ try{const stored=await dbGet();bank=Array.isArray(stored)&&stored.length?clean(stored):EXAMPLES.slice();}
+ catch(e){bank=EXAMPLES.slice();$("uploadMsg").textContent="ਇਹ Browser ਸਥਾਨਕ MCQ ਸਟੋਰੇਜ ਨਹੀਂ ਦੇ ਰਿਹਾ। Safari ਵਿੱਚ ਖੋਲ੍ਹੋ।"}
+ renderSummary();
+})();
+</script>
+</body>
+</html>
